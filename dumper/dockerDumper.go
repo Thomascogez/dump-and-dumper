@@ -6,10 +6,13 @@ import (
 	"sync"
 
 	"github.com/Thomascogez/dump-and-dumper/helpers"
+	upload "github.com/Thomascogez/dump-and-dumper/uploader"
 	"github.com/docker/docker/api/types"
 )
 
-type DockerDumper struct{}
+type DockerDumper struct {
+	Uploader upload.Uploader
+}
 
 func (dockerDumper DockerDumper) Dump(containers []types.Container) {
 
@@ -34,6 +37,5 @@ func (dockerDumper DockerDumper) Dump(containers []types.Container) {
 			wg.Done()
 		}(container)
 	}
-
 	wg.Wait()
 }
