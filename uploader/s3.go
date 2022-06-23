@@ -9,6 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"github.com/spf13/pflag"
 )
 
 type S3Uploader struct {
@@ -46,4 +47,20 @@ func (s3Uploader S3Uploader) Upload(filePath string, fileName string) {
 	helpers.CheckError(err)
 
 	fmt.Printf("[dump & dumper] - file uploaded to, %s\n", result.Location)
+}
+
+func NewS3UploaderFromFlags(flags *pflag.FlagSet) S3Uploader {
+	endPoint, _ := flags.GetString("s3-endpoint")
+	region, _ := flags.GetString("s3-region")
+	bucket, _ := flags.GetString("s3-bucket")
+	secretKeyId, _ := flags.GetString("s3-secretKeyId")
+	secretKey, _ := flags.GetString("s3-secretKey")
+
+	return S3Uploader{
+		SecretKeyID: secretKeyId,
+		SecretKey:   secretKey,
+		Bucket:      bucket,
+		Endpoint:    endPoint,
+		Region:      region,
+	}
 }

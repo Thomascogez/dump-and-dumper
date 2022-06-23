@@ -25,13 +25,13 @@ func BuildContainerDumpCommandArgs(containerId string, dumpOptions DumpOptions) 
 	return args
 }
 
-func FindContainersByTypes(containers []types.Container, containerType string) []types.Container {
+func FindContainersToDump(containers []types.Container) []types.Container {
 	containerToDump := make([]types.Container, 0)
 
 	for _, container := range containers {
 		containerDumpConfig := ExtractDumpOptionsFromLabels(container.Labels)
 
-		if containerDumpConfig.Enabled && containerDumpConfig.Type == containerType {
+		if containerDumpConfig.Enabled {
 			containerToDump = append(containerToDump, container)
 		}
 	}
