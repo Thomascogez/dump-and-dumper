@@ -13,18 +13,18 @@ services:
       POSTGRES_PASSWORD: test
       POSTGRES_DB: test
     labels:
-      - 'go-dumper.enabled=false'
-      - 'go-dumper.user=postgres'
-      - 'go-dumper.type=pg'
+      - 'dump-and-dumper.enabled=false'
+      - 'dump-and-dumper.user=postgres'
+      - 'dump-and-dumper.type=pg'
   pg_dump_1:
     image: postgres:latest
     environment:
       POSTGRES_PASSWORD: test
       POSTGRES_DB: test
     labels:
-      - 'go-dumper.enabled=true'
-      - 'go-dumper.user=postgres'
-      - 'go-dumper.type=pg'
+      - 'dump-and-dumper.enabled=true'
+      - 'dump-and-dumper.user=postgres'
+      - 'dump-and-dumper.type=pg'
 
   pg_dump_2:
     image: postgres:latest
@@ -32,6 +32,6 @@ services:
       POSTGRES_PASSWORD: test
       POSTGRES_DB: test
     labels:
-      - 'go-dumper.enabled=true'
-      - 'go-dumper.user=postgres'
-      - 'go-dumper.type=pg'
+      - 'dump-and-dumper.enabled=true'
+      - 'dump-and-dumper.user=postgres'
+      - 'dump-and-dumper.type=pg'

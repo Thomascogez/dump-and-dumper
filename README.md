@@ -16,9 +16,9 @@ Add labels to the containers you want to dump
 The above labels are currently available
 | label             | description                                        |
 | ----------------- | -------------------------------------------------- |
-| go-dumper.enabled | Use to determined if the container should be dump  |
-| go-dumper.user    | The database user to use during the dump process   |
-| go-dumper.type    | The database type (for now only "pg" is available) |
+| dump-and-dumper.enabled | Use to determined if the container should be dump  |
+| dump-and-dumper.user    | The database user to use during the dump process   |
+| dump-and-dumper.type    | The database type (for now only "pg" is available) |
 
 > docker-compose example
 ```yml
@@ -30,9 +30,9 @@ version: '3.0'
         POSTGRES_PASSWORD: test
         POSTGRES_DB: test
         labels:
-        - 'go-dumper.enabled=true'
-        - 'go-dumper.user=postgres'
-        - 'go-dumper.type=pg'
+        - 'dump-and-dumper.enabled=true'
+        - 'dump-and-dumper.user=postgres'
+        - 'dump-and-dumper.type=pg'
 ```
 
 Then start or restart your docker containers

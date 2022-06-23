@@ -12,9 +12,9 @@ func TestExtractDumpConfigFromLabels(t *testing.T) {
 
 	labels := make(map[string]string)
 
-	labels["go-dumper.enabled"] = "true"
-	labels["go-dumper.user"] = "user"
-	labels["go-dumper.type"] = "pg"
+	labels["dump-and-dumper.enabled"] = "true"
+	labels["dump-and-dumper.user"] = "user"
+	labels["dump-and-dumper.type"] = "pg"
 
 	dumpConfig := dumper.ExtractDumpOptionsFromLabels(labels)
 

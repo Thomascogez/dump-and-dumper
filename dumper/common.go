@@ -4,9 +4,9 @@ import "github.com/docker/docker/api/types"
 
 func ExtractDumpOptionsFromLabels(labels map[string]string) DumpOptions {
 	return DumpOptions{
-		Enabled: labels["go-dumper.enabled"] == "true",
-		User:    labels["go-dumper.user"],
-		Type:    labels["go-dumper.type"],
+		Enabled: labels["dump-and-dumper.enabled"] == "true",
+		User:    labels["dump-and-dumper.user"],
+		Type:    labels["dump-and-dumper.type"],
 	}
 }
 
