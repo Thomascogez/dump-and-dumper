@@ -6,12 +6,15 @@ import (
 	"sync"
 
 	"github.com/Thomascogez/dump-and-dumper/helpers"
+	upload "github.com/Thomascogez/dump-and-dumper/uploader"
 	"github.com/docker/docker/api/types"
 )
 
-type PgDumper struct{}
+type DockerDumper struct {
+	Uploader upload.Uploader
+}
 
-func (pgDumper PgDumper) Dump(containers []types.Container) {
+func (dockerDumper DockerDumper) Dump(containers []types.Container) {
 
 	var wg sync.WaitGroup
 
@@ -34,6 +37,5 @@ func (pgDumper PgDumper) Dump(containers []types.Container) {
 			wg.Done()
 		}(container)
 	}
-
 	wg.Wait()
 }

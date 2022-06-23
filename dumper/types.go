@@ -1,11 +1,5 @@
 package dumper
 
-import "github.com/docker/docker/api/types"
-
-type Dumper interface {
-	Dump(container *types.Container)
-}
-
 const (
 	PG = "pg"
 )
