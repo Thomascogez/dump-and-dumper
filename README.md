@@ -8,6 +8,19 @@ Dump & dumper is a simple cli tool written in go to ease the process of containe
 
 > Dump & dumper 1.0.0 currently support only _postgress_ database
 
+# Install
+
+Using *Homebrew*
+
+```sh
+brew tap Thomascogez/thomascogez
+
+```
+Then
+```sh
+brew install dump-and-dumper
+```
+
 # Usage
 
 
@@ -50,6 +63,6 @@ The above flags are available
 | --s3-secretKey    | Set the secret key                 |
 
 ```sh
-dump-dumper dump  --s3-endpoint=S3_ENDPOINT --s3-bucket=BUCKET_NAME --s3-secretKeyId=SECRET_KEY_ID --s3-secretKey=SECRET_KEY --s3-region=REGION
+dump-and-dumper dump  --s3-endpoint=S3_ENDPOINT --s3-bucket=BUCKET_NAME --s3-secretKeyId=SECRET_KEY_ID --s3-secretKey=SECRET_KEY --s3-region=REGION
 
 ```
