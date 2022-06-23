@@ -1,0 +1,66 @@
+version: '3.0'
+
+services:
+  pg_without_label:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+
+  pg_dump_disabled:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    labels:
+      - 'go.dumper.enabled=false'
+      - 'go.dumper.databaseUser=postgres'
+      - 'go.dumper.databaseType=pg'
+
+  pg_dump_1:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    labels:
+      - 'go-dumper.enabled=true'
+      - 'go-dumper.user=postgres'
+      - 'go-dumper.type=pg'
+
+  pg_dump_2:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    labels:
+      - 'go.dumper.enabled=true'
+      - 'go.dumper.databaseUser=postgres'
+      - 'go.dumper.databaseType=pg'
+
+  mysql_dump:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_ROOT_PASSWORD: root
+    labels:
+      - 'go.dumper.enabled=true'
+      - 'go.dumper.databaseUser=root'
+      - 'go.dumper.databasePassword=root'
+      - 'go.dumper.databaseName=db'
+      - 'go.dumper.databaseType=mysql'
+
+  minio:
+    image: minio/minio
+    entrypoint: sh
+    command: -c 'mkdir -p ./data/s3/default && minio server ./data/s3 -console-address ":9001"'
+    environment:
+      - MINIO_REGION=eu-west-3
+      - MINIO_ACCESS_KEY=2OKVH3X1NLIGU9RA4VER
+      - MINIO_SECRET_KEY=RSrrhXZ6LTejtHyhgZfilWO3On1ltOU8YI1B4Act
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - ./minio:/data/s3
