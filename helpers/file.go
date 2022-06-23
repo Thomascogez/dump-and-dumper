@@ -9,7 +9,7 @@ import (
 )
 
 func FileNameFromCurrentTimestamp(fileExtension string) string {
-	return fmt.Sprintf("%d.%s", time.Now().UnixMilli(), fileExtension)
+	return fmt.Sprintf("%s.%s", time.Now().String(), fileExtension)
 }
 
 func CreateTempDumpFile() (*os.File, string, string) {
