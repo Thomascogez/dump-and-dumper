@@ -21,5 +21,5 @@ func main() {
 
 	pgContainersToDump := dumper.FindContainersByTypes(containers, dumper.PG)
 
-	dumper.PgDumper{}.Dump(pgContainersToDump)
+	dumper.DockerDumper{}.Dump(pgContainersToDump)
 }

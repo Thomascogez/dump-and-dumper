@@ -9,9 +9,9 @@ import (
 	"github.com/docker/docker/api/types"
 )
 
-type PgDumper struct{}
+type DockerDumper struct{}
 
-func (pgDumper PgDumper) Dump(containers []types.Container) {
+func (dockerDumper DockerDumper) Dump(containers []types.Container) {
 
 	var wg sync.WaitGroup
 
