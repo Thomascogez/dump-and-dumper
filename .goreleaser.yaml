@@ -27,7 +27,7 @@ brews:
     homepage: "https://github.com/Thomascogez/dump-and-dumper"
     tap:
       owner: Thomascogez
-      name: homebrew-dump-and-dumper
+      name: homebrew-thomascogez
     commit_author:
       name: Thomascogez
       email: thomas.cogez@gmail.com
