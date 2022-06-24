@@ -38,14 +38,14 @@ The above labels are currently available
 version: '3.0'
     services:
         pg_dump_1:
-        image: postgres:latest
-        environment:
-        POSTGRES_PASSWORD: test
-        POSTGRES_DB: test
-        labels:
-        - 'dump-and-dumper.enabled=true'
-        - 'dump-and-dumper.user=postgres'
-        - 'dump-and-dumper.type=pg'
+            image: postgres:latest
+            environment:
+            POSTGRES_PASSWORD: test
+            POSTGRES_DB: test
+            labels:
+                - 'dump-and-dumper.enabled=true'
+                - 'dump-and-dumper.user=postgres'
+                - 'dump-and-dumper.type=pg'
 ```
 
 Then start or restart your docker containers
