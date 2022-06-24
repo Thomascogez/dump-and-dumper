@@ -8,10 +8,10 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "dump-dumper",
-	Short: "dump-dumper is a simple cli tool to streamline your dockerize database backup process",
+	Use:   "dump-and-dumper",
+	Short: "dump & dumper is a simple cli tool to streamline your dockerize database backup process",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Welcome to dump-dumper")
+		fmt.Println("Welcome to dump & dumper")
 	},
 }
 
