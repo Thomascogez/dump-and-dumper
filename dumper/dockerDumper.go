@@ -7,12 +7,14 @@ import (
 	"sync"
 
 	"github.com/Thomascogez/dump-and-dumper/helpers"
+	"github.com/Thomascogez/dump-and-dumper/notifier"
 	upload "github.com/Thomascogez/dump-and-dumper/uploader"
 	"github.com/docker/docker/api/types"
 )
 
 type DockerDumper struct {
-	Uploader upload.Uploader
+	Uploader  upload.Uploader
+	Notifiers []notifier.Notifier
 }
 
 func (dockerDumper DockerDumper) Dump(containers []types.Container) {
@@ -39,6 +41,13 @@ func (dockerDumper DockerDumper) Dump(containers []types.Container) {
 				path.Join(tempDumpFolderPath, tempDumpFileName),
 				container.Names[0]+"-"+tempDumpFileName,
 			)
+
+			notifierMessage := "Successfully Dumped " + container.Names[0]
+
+			for _, notifier := range dockerDumper.Notifiers {
+				notifier.Notify(notifierMessage)
+			}
+
 		}(container)
 	}
 	wg.Wait()
