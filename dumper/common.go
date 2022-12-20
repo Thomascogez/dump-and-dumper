@@ -1,6 +1,8 @@
 package dumper
 
-import "github.com/docker/docker/api/types"
+import (
+	"github.com/docker/docker/api/types"
+)
 
 func ExtractDumpOptionsFromLabels(labels map[string]string) DumpOptions {
 	return DumpOptions{
