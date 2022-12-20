@@ -66,3 +66,9 @@ The above flags are available
 dump-and-dumper dump  --s3-endpoint=S3_ENDPOINT --s3-bucket=BUCKET_NAME --s3-secretKeyId=SECRET_KEY_ID --s3-secretKey=SECRET_KEY --s3-region=REGION
 
 ```
+# Success callback/notify
+dump-and-dumper have also the ability to notify you after a successfull dump.
+> For now only https://ntfy.sh/ is available
+
+to use it simple add the flag ```--ntfy-endpoint=``` where the value is your ntfy topic endpoint
+
